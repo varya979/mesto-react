@@ -1,62 +1,24 @@
 // Файл App.js — корневой компонент приложения.
 import React from "react";
 // import Card from "./Card";
-// import Footer from "./Footer";
-// import Header from "./Header";
 // import ImagePopup from "./ImagePopup";
-// import Main from "./Main";
 // import PopupWithForm from "./PopupWithForm";
 // import Fieldset from "./Fieldset";
 
 // import api from '../utils';
 
-import headerLogo from "../images/header__logo.svg";
-import profileEditButton from "../images/profile__button-edit.svg";
-import profileAddButton from "../images/profile__button-add.svg";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+
 import popupCloseButton from "../images/popup__button-close.svg";
 
 export default function App() {
   return (
     <>
-      <header className="header">
-        <img className="header__logo" src={headerLogo} alt="логотип Место" />
-      </header>
-
-      <section className="profile">
-        <div className="profile__avatar-container">
-          <button
-            className="profile__avatar-edit-button"
-            type="button"
-          ></button>
-          <img className="profile__avatar" alt="Аватар пользователя" />
-        </div>
-        <div className="profile__info">
-          <h1 className="profile__title"></h1>
-          <button className="profile__button-edit opacity" type="button">
-            <img
-              className="profile__button-edit-image"
-              src={profileEditButton}
-              alt="Рисунок карандаша"
-            />
-          </button>
-          <p className="profile__subtitle"></p>
-        </div>
-        <button className="profile__button-add opacity" type="button">
-          <img
-            className="profile__button-add-image"
-            src={profileAddButton}
-            alt="Знак плюс"
-          />
-        </button>
-      </section>
-
-      <ul className="elements"></ul>
-
-      <footer className="footer">
-        <p className="footer__item" lang="en">
-          &copy; 2020 Mesto Russia
-        </p>
-      </footer>
+      <Header />
+      <Main />
+      <Footer />
 
       <template className="element-template">
         <li className="element">
