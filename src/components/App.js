@@ -2,7 +2,7 @@
 import React from "react";
 // import Card from "./Card";
 // import ImagePopup from "./ImagePopup";
-// import PopupWithForm from "./PopupWithForm";
+
 // import Fieldset from "./Fieldset";
 
 // import api from '../utils';
@@ -10,8 +10,8 @@ import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-
-import popupCloseButton from "../images/popup__button-close.svg";
+import PopupWithForm from "./PopupWithForm";
+import Fieldset from "./Fieldset";
 
 export default function App() {
   return (
@@ -19,6 +19,72 @@ export default function App() {
       <Header />
       <Main />
       <Footer />
+      <PopupWithForm
+        name="profile"
+        title="Редактировать профиль"
+        formClassName="popup__form"
+        submitButtonTitle="Сохранить"
+      >
+        <Fieldset
+          id="profile-name"
+          name="name"
+          placeholderText="Имя"
+          typeValue="text"
+          minLengthValue="2"
+          maxLengthValue="40"
+        ></Fieldset>
+        <Fieldset
+          id="profile-description"
+          name="description"
+          placeholderText="О себе"
+          typeValue="text"
+          minLengthValue="2"
+          maxLengthValue="200"
+        ></Fieldset>
+      </PopupWithForm>
+
+      <PopupWithForm
+        name="card"
+        title="Новое место"
+        formClassName="popup__form"
+        submitButtonTitle="Создать"
+      >
+        <Fieldset
+          id="card-name"
+          name="name"
+          placeholderText="Название"
+          typeValue="text"
+          minLengthValue="2"
+          maxLengthValue="30"
+        ></Fieldset>
+        <Fieldset
+          id="card-description"
+          name="link"
+          placeholderText="Ссылка на картинку"
+          typeValue="url"
+        ></Fieldset>
+      </PopupWithForm>
+
+      <PopupWithForm
+        name="update-avatar"
+        title="Обновить аватар"
+        formClassName="popup__form popup__form_avatar"
+        submitButtonTitle="Сохранить"
+      >
+        <Fieldset
+          id="avatar"
+          name="avatar"
+          placeholderText="Ссылка на картинку"
+          typeValue="url"
+        ></Fieldset>
+      </PopupWithForm>
+
+      <PopupWithForm
+        name="confirm-delete"
+        title="Вы уверены?"
+        formClassName="popup__form popup__form_confirm"
+        submitButtonTitle="Да"
+      ></PopupWithForm>
 
       <template className="element-template">
         <li className="element">
@@ -39,173 +105,6 @@ export default function App() {
           </div>
         </li>
       </template>
-
-      <div className="popup popup_type_profile">
-        <div className="popup__container">
-          <button className="popup__button-close opacity" type="button">
-            <img
-              className="popup__button-close-image"
-              src={popupCloseButton}
-              alt="рисунок 'крестик' закрытия окна"
-            />
-          </button>
-          <form
-            className="popup__form"
-            name="profile"
-            action="#"
-            method="post"
-            noValidate
-          >
-            <h3 className="popup__title">Редактировать профиль</h3>
-            <fieldset className="popup__field">
-              <input
-                id="profile-name"
-                className="popup__input popup__input_type_name"
-                type="text"
-                minLength="2"
-                maxLength="40"
-                placeholder="Имя"
-                name="name"
-                required
-              />
-              <span className="popup__input-error popup__input-error-profile-name"></span>
-            </fieldset>
-            <fieldset className="popup__field">
-              <input
-                id="profile-description"
-                className="popup__input popup__input_type_description"
-                type="text"
-                minLength="2"
-                maxLength="200"
-                placeholder="О себе"
-                name="about"
-                required
-              />
-              <span className="popup__input-error popup__input-error-profile-description"></span>
-            </fieldset>
-            <button className="popup__button-save" type="submit">
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div className="popup popup_type_card">
-        <div className="popup__container">
-          <button className="popup__button-close opacity" type="button">
-            <img
-              className="popup__button-close-image"
-              src={popupCloseButton}
-              alt="рисунок 'крестик' закрытия окна"
-            />
-          </button>
-          <form
-            className="popup__form"
-            name="card"
-            action="#"
-            method="post"
-            noValidate
-          >
-            <h3 className="popup__title">Новое место</h3>
-            <fieldset className="popup__field">
-              <input
-                id="card-name"
-                className="popup__input popup__input_type_name"
-                type="text"
-                placeholder="Название"
-                minLength="2"
-                maxLength="30"
-                name="name"
-                required
-              />
-              <span className="popup__input-error popup__input-error-card-name"></span>
-            </fieldset>
-            <fieldset className="popup__field">
-              <input
-                id="card-description"
-                className="popup__input popup__input_type_description"
-                type="url"
-                placeholder="Ссылка на картинку"
-                name="link"
-                required
-              />
-              <span className="popup__input-error popup__input-error-card-description"></span>
-            </fieldset>
-            <button className="popup__button-save" type="submit">
-              Создать
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div className="popup popup_type_picture">
-        <div className="popup__picture-container">
-          <button className="popup__button-close opacity" type="button">
-            <img
-              className="popup__button-close-image"
-              src={popupCloseButton}
-              alt="рисунок 'крестик' закрытия окна"
-            />
-          </button>
-          <figure className="popup__figure">
-            {/* <img className="popup__image" src="#" alt="#" /> */}
-            <figcaption className="popup__figcaption"></figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div className="popup popup_type_confirm-delete">
-        <div className="popup__container">
-          <button className="popup__button-close opacity" type="submit">
-            <img
-              className="popup__button-close-image"
-              src={popupCloseButton}
-              alt="рисунок 'крестик' закрытия окна"
-            />
-          </button>
-          <form className="popup__form popup__form_confirm" name="confirm">
-            <h3 className="popup__title popup__title_confirm">Вы уверены?</h3>
-            <button className="popup__button-save" type="submit">
-              Да
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div className="popup popup_type_update-avatar">
-        <div className="popup__container">
-          <button className="popup__button-close opacity" type="button">
-            <img
-              className="popup__button-close-image"
-              src={popupCloseButton}
-              alt="рисунок 'крестик' закрытия окна"
-            />
-          </button>
-          <form
-            className="popup__form popup__form_avatar"
-            name="avatar"
-            action="#"
-            method="post"
-            noValidate
-          >
-            <h3 className="popup__title">Обновить аватар</h3>
-            <fieldset className="popup__field">
-              <input
-                id="avatar"
-                className="popup__input"
-                type="url"
-                placeholder="Ссылка на картинку"
-                name="avatar"
-                required
-              />
-              <span className="popup__input-error popup__input-error-avatar"></span>
-            </fieldset>
-            <button className="popup__button-save" type="submit">
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </div>
     </>
   );
 }

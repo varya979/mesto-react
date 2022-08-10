@@ -1,28 +1,28 @@
-import React, { Children } from "react";
-import popupButtonClose from "../images/popup__button-close.svg";
+import React from "react";
+import popupCloseButton from "../images/popup__button-close.svg";
 
-export default function PopupWithForm({ name, title }) {
+export default function PopupWithForm(props) {
   return (
-    <div className={`popup popup_type_${name}`}>
+    <div className={`popup popup_type_${props.name}`}>
       <div className="popup__container">
         <button className="popup__button-close opacity" type="button">
           <img
             className="popup__button-close-image"
-            src={popupButtonClose}
-            alt="рисунок кнопки закрытия окна"
+            src={popupCloseButton}
+            alt="рисунок 'крестик' закрытия окна"
           />
         </button>
         <form
-          className="popup__form"
-          name={name}
+          className={props.formClassName}
+          name={props.name}
           action="#"
           method="post"
           noValidate
         >
-          <h3 className="popup__title">{title}</h3>
-          {/* {children} */}
+          <h3 className="popup__title">{props.title}</h3>
+          {props.children}
           <button className="popup__button-save" type="submit">
-            Сохранить
+            {props.submitButtonTitle}
           </button>
         </form>
       </div>
