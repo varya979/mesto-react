@@ -29,6 +29,12 @@ export default function App() {
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
+
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+  }
   return (
     <>
       <Header />
@@ -40,6 +46,7 @@ export default function App() {
       <Footer />
       <PopupWithForm
         isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
         name="profile"
         title="Редактировать профиль"
         formClassName="popup__form"
@@ -65,6 +72,7 @@ export default function App() {
 
       <PopupWithForm
         isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
         name="card"
         title="Новое место"
         formClassName="popup__form"
@@ -88,6 +96,7 @@ export default function App() {
 
       <PopupWithForm
         isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
         name="update-avatar"
         title="Обновить аватар"
         formClassName="popup__form popup__form_avatar"

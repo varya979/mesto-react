@@ -9,7 +9,11 @@ export default function PopupWithForm(props) {
       }`}
     >
       <div className="popup__container">
-        <button className="popup__button-close opacity" type="button">
+        <button
+          onClick={props.onClose}
+          className="popup__button-close opacity"
+          type="button"
+        >
           <img
             className="popup__button-close-image"
             src={popupCloseButton}
