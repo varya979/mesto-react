@@ -2,44 +2,13 @@ import React from "react";
 import profileEditButton from "../images/profile__button-edit.svg";
 import profileAddButton from "../images/profile__button-add.svg";
 
-export default function Main() {
-  function handleEditAvatarClick() {
-    const avatarButton = document.querySelector(".profile__avatar-edit-button");
-
-    avatarButton.addEventListener("click", () => {
-      const avatarPopup = document.querySelector(".popup_type_update-avatar");
-      avatarPopup.classList.add("popup_opened");
-    });
-  }
-
-  function handleEditProfileClick() {
-    const profilePopupEditButton = document.querySelector(
-      ".profile__button-edit"
-    );
-
-    profilePopupEditButton.addEventListener("click", () => {
-      const profilePopup = document.querySelector(".popup_type_profile");
-      profilePopup.classList.add("popup_opened");
-    });
-  }
-
-  function handleAddPlaceClick() {
-    const profilePopupAddButton = document.querySelector(
-      ".profile__button-add"
-    );
-
-    profilePopupAddButton.addEventListener("click", () => {
-      const cardPopup = document.querySelector(".popup_type_card");
-      cardPopup.classList.add("popup_opened");
-    });
-  }
-
+export default function Main(props) {
   return (
     <main>
       <section className="profile">
         <div className="profile__avatar-container">
           <button
-            onClick={handleEditAvatarClick}
+            onClick={props.onEditAvatar}
             className="profile__avatar-edit-button"
             type="button"
           ></button>
@@ -48,7 +17,7 @@ export default function Main() {
         <div className="profile__info">
           <h1 className="profile__title"></h1>
           <button
-            onClick={handleEditProfileClick}
+            onClick={props.onEditProfile}
             className="profile__button-edit opacity"
             type="button"
           >
@@ -61,7 +30,7 @@ export default function Main() {
           <p className="profile__subtitle"></p>
         </div>
         <button
-          onClick={handleAddPlaceClick}
+          onClick={props.onAddPlace}
           className="profile__button-add opacity"
           type="button"
         >

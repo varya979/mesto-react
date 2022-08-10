@@ -1,9 +1,6 @@
 // Файл App.js — корневой компонент приложения.
 import React from "react";
 // import Card from "./Card";
-// import ImagePopup from "./ImagePopup";
-
-// import Fieldset from "./Fieldset";
 
 // import api from '../utils';
 
@@ -12,14 +9,37 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import Fieldset from "./Fieldset";
+import ImagePopup from "./ImagePopup";
 
 export default function App() {
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
+    React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
+    React.useState(false);
+
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(true);
+  }
+
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(true);
+  }
+
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
   return (
     <>
       <Header />
-      <Main />
+      <Main
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        onEditAvatar={handleEditAvatarClick}
+      />
       <Footer />
       <PopupWithForm
+        isOpen={isEditProfilePopupOpen}
         name="profile"
         title="Редактировать профиль"
         formClassName="popup__form"
@@ -44,6 +64,7 @@ export default function App() {
       </PopupWithForm>
 
       <PopupWithForm
+        isOpen={isAddPlacePopupOpen}
         name="card"
         title="Новое место"
         formClassName="popup__form"
@@ -66,6 +87,7 @@ export default function App() {
       </PopupWithForm>
 
       <PopupWithForm
+        isOpen={isEditAvatarPopupOpen}
         name="update-avatar"
         title="Обновить аватар"
         formClassName="popup__form popup__form_avatar"
@@ -85,6 +107,8 @@ export default function App() {
         formClassName="popup__form popup__form_confirm"
         submitButtonTitle="Да"
       ></PopupWithForm>
+
+      <ImagePopup></ImagePopup>
 
       <template className="element-template">
         <li className="element">
