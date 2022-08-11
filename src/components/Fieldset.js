@@ -15,9 +15,7 @@ export default function Fieldset(props) {
         maxLength={props.maxLengthValue}
         required
       />
-      <span
-        className={`popup__input-error popup__input-error-${props.id}`}
-      ></span>
+      <span className={`popup__input-error popup__input-error-${props.id}`} />
     </fieldset>
   );
 }

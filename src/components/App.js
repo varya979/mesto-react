@@ -65,7 +65,7 @@ export default function App() {
           typeValue="text"
           minLengthValue="2"
           maxLengthValue="40"
-        ></Fieldset>
+        />
         <Fieldset
           id="profile-description"
           name="description"
@@ -73,7 +73,7 @@ export default function App() {
           typeValue="text"
           minLengthValue="2"
           maxLengthValue="200"
-        ></Fieldset>
+        />
       </PopupWithForm>
 
       <PopupWithForm
@@ -91,13 +91,13 @@ export default function App() {
           typeValue="text"
           minLengthValue="2"
           maxLengthValue="30"
-        ></Fieldset>
+        />
         <Fieldset
           id="card-description"
           name="link"
           placeholderText="Ссылка на картинку"
           typeValue="url"
-        ></Fieldset>
+        />
       </PopupWithForm>
 
       <PopupWithForm
@@ -113,7 +113,7 @@ export default function App() {
           name="avatar"
           placeholderText="Ссылка на картинку"
           typeValue="url"
-        ></Fieldset>
+        />
       </PopupWithForm>
 
       <PopupWithForm
@@ -121,7 +121,7 @@ export default function App() {
         title="Вы уверены?"
         formClassName="popup__form popup__form_confirm"
         submitButtonTitle="Да"
-      ></PopupWithForm>
+      />
 
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </>

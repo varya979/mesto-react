@@ -42,7 +42,7 @@ export default function Main(props) {
             onClick={props.onEditAvatar}
             className="profile__avatar-edit-button"
             type="button"
-          ></button>
+          />
           <img
             className="profile__avatar"
             src={userAvatar}
