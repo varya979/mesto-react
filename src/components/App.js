@@ -13,7 +13,10 @@ export default function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState("");
+  const [selectedCard, setSelectedCard] = React.useState({
+    name: "",
+    link: "",
+  });
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -31,7 +34,7 @@ export default function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard("");
+    setSelectedCard({ name: "", link: "" });
   }
 
   function handleCardClick(card) {

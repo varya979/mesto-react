@@ -3,7 +3,11 @@ import popupCloseButton from "../images/popup__button-close.svg";
 
 export default function ImagePopup(props) {
   return (
-    <div className={`popup popup_type_picture ${props.card && "popup_opened"}`}>
+    <div
+      className={`popup popup_type_picture ${
+        props.card.link && "popup_opened"
+      }`}
+    >
       <div className="popup__picture-container">
         <button
           onClick={props.onClose}
