@@ -77,8 +77,8 @@ export default function Main(props) {
         </button>
       </section>
 
-      <section className="element-template">
-        <ul className="elements">
+      <section className="cards">
+        <ul className="cards__list">
           {cards.map((card) => (
             <Card key={card._id} card={card} onCardClick={props.onCardClick} />
           ))}

@@ -6,23 +6,20 @@ export default function Card(props) {
   }
 
   return (
-    <li className="element">
+    <li className="cards__item">
       <img
         onClick={handleClick}
-        className="element__image"
+        className="cards__image"
         src={props.card.link}
         alt={props.card.name}
       />
-      <button className="element__button-delete opacity" type="button"></button>
-      <div className="element__info">
-        <p className="element__title">{props.card.name}</p>
-        <div className="element__likes-container">
-          <button
-            className="element__button-like opacity"
-            type="button"
-          ></button>
+      <button className="cards__button-delete opacity" type="button"></button>
+      <div className="cards__info">
+        <p className="cards__title">{props.card.name}</p>
+        <div className="cards__likes-container">
+          <button className="cards__button-like opacity" type="button"></button>
           {props.card.likes.length > 0 && (
-            <p className="element__count-likes">{props.card.likes.length}</p>
+            <p className="cards__count-likes">{props.card.likes.length}</p>
           )}
         </div>
       </div>
