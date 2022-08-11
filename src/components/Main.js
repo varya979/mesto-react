@@ -2,11 +2,13 @@ import React from "react";
 import profileEditButton from "../images/profile__button-edit.svg";
 import profileAddButton from "../images/profile__button-add.svg";
 import api from "../utils/api";
+import Card from "./Card";
 
 export default function Main(props) {
   const [userName, setUserName] = React.useState();
   const [userDescription, setUserDescription] = React.useState();
   const [userAvatar, setUserAvatar] = React.useState();
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
     api
@@ -20,6 +22,17 @@ export default function Main(props) {
         console.log(err);
       });
   }, [userName, userDescription, userAvatar]);
+
+  React.useEffect(() => {
+    api
+      .getCardsFromServer()
+      .then((cardsData) => {
+        setCards(cardsData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <main>
@@ -64,7 +77,13 @@ export default function Main(props) {
         </button>
       </section>
 
-      <ul className="elements"></ul>
+      <section className="element-template">
+        <ul className="elements">
+          {cards.map((card) => (
+            <Card key={card._id} card={card} onCardClick={props.onCardClick} />
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }

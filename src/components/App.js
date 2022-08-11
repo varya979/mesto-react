@@ -1,8 +1,5 @@
 // Файл App.js — корневой компонент приложения.
 import React from "react";
-// import Card from "./Card";
-
-// import api from "../utils/api.js";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -16,6 +13,7 @@ export default function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState("");
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -33,16 +31,25 @@ export default function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setSelectedCard("");
   }
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
+
   return (
     <>
       <Header />
+
       <Main
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
+
       <PopupWithForm
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
@@ -116,27 +123,7 @@ export default function App() {
         submitButtonTitle="Да"
       ></PopupWithForm>
 
-      <ImagePopup></ImagePopup>
-
-      <template className="element-template">
-        <li className="element">
-          <img className="element__image" src="#" alt="#" />
-          <button
-            className="element__button-delete opacity"
-            type="button"
-          ></button>
-          <div className="element__info">
-            <p className="element__title"></p>
-            <div className="element__likes-container">
-              <button
-                className="element__button-like opacity"
-                type="button"
-              ></button>
-              <p className="element__count-likes"></p>
-            </div>
-          </div>
-        </li>
-      </template>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </>
   );
 }
