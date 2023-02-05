@@ -27,6 +27,7 @@ export default function App() {
     api
       .getUserInfo()
       .then((data) => {
+        // console.log(data);
         setCurrentUser(data);
       })
       .catch((err) => {
@@ -38,6 +39,7 @@ export default function App() {
     api
       .getCards()
       .then((data) => {
+        // console.log(data);
         setCards(data);
       })
       .catch((err) => {
