@@ -8,11 +8,13 @@ export default function Fieldset(props) {
         className={`popup__input popup__input_type_${props.name}`}
         name={props.name}
         placeholder={props.placeholderText}
-        // value=""
         type={props.typeValue}
         minLength={props.minLengthValue}
         maxLength={props.maxLengthValue}
         required
+        value={props.value}
+        onChange={props.onChange}
+        ref={props.inputRef}
       />
       <span className={`popup__input-error popup__input-error-${props.id}`} />
     </fieldset>
