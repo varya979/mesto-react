@@ -33,7 +33,7 @@ export default function Card(props) {
       />
       {isOwn && (
         <button
-          className="cards__button-delete opacity"
+          className="cards__button-delete  opacity"
           type="button"
           onClick={handleDeleteClick}
         />

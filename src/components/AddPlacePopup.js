@@ -1,22 +1,33 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import Fieldset from "./Fieldset";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function AddPlacePopup(props) {
-  const inputNameRef = React.useRef();
-  const inputLinkRef = React.useRef();
+  const currentUser = React.useContext(CurrentUserContext);
+
+  const [name, setName] = React.useState("");
+  const [link, setLink] = React.useState("");
 
   React.useEffect(() => {
-    inputNameRef.current.value = "";
-    inputLinkRef.current.value = "";
-  }, [props.isOpen]);
+    setName("");
+    setLink("");
+  }, [currentUser, props.isOpen]);
+
+  function handleChangeName(evt) {
+    setName(evt.target.value);
+  }
+
+  function handleChangeLink(evt) {
+    setLink(evt.target.value);
+  }
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
     props.onAddPlace({
-      name: inputNameRef.current.value,
-      link: inputLinkRef.current.value,
+      name: name,
+      link: link,
     });
   }
 
@@ -37,14 +48,16 @@ export default function AddPlacePopup(props) {
         typeValue="text"
         minLengthValue="2"
         maxLengthValue="30"
-        inputRef={inputNameRef}
+        value={name}
+        onChange={handleChangeName}
       />
       <Fieldset
         id="card-description"
         name="link"
         placeholderText="Ссылка на картинку"
         typeValue="url"
-        inputRef={inputLinkRef}
+        value={link}
+        onChange={handleChangeLink}
       />
     </PopupWithForm>
   );

@@ -39,7 +39,7 @@ export default function App() {
     api
       .getCards()
       .then((data) => {
-        // console.log(data);
+        //console.log(data);
         setCards(data);
       })
       .catch((err) => {
